@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { API_BASE_URL } from "../config";
+import React, { useState } from "react";
+
+import Search from "./search";
+import PhotoView from "./photo-view";
+import Loading from "./loading";
 
 const Landing = () => {
 
-    const [photos, setPhotos] = useState(null);
-    
-    const fetchPhotos = async (sol, camera) => {
-        const response = await axios(`${API_BASE_URL}/api/mars/${sol}/${camera}`);
-        setPhotos(response.data)
-        console.log(response.data); // debug
+    const [view, setView] = useState(null)
+
+    const displayLoading = () => {
+        setView(<Loading />)
     }
 
-    useEffect(() => {
-        fetchPhotos('2434','fhaz');
-    }, []);
-
-    let view;
-    if (!photos) {
-        view = '';
-    }
-    else if (photos) {
-        view = photos[0].id;
+    const displayPhotos = photos => {
+        if (photos.length === 0) {
+            setView(
+                <div className="text-center photo-card card">
+                    <div className="card-body">
+                        <p className="card-text">Unable to find photos for this camera on this sol.</p>
+                    </div>
+                </div>
+            )
+        }
+        else {
+            setView(<PhotoView data={photos} />);
+        }
     }
 
     return (
         <div>
-            <h1>Mars Photos</h1>
+            <h1 className="header-title">Mars Photos: Curiosity Rover</h1>
+            <Search displayLoading={() => displayLoading()} displayPhotos={(photos) => displayPhotos(photos)} />
             {view}
         </div>
     );

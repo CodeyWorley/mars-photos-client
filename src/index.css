@@ -3,3 +3,60 @@ body {
   background-color: #363636;
 }
 
+.header-title {
+  text-align: center;
+  color: white;
+  margin: 3%;
+}
+
+.search-container {
+  margin: 3% 20%;
+  background-color: #F0EDE5;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.photo-card {
+  margin: 3% 20%;
+  background-color: #F0EDE5;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.form-group {
+  padding: 10px;
+}
+
+.btn-submit {
+  margin: 10px;
+}
+
+.spinner-border {
+  margin-bottom: 3%;
+}
+
+.footer-container {
+  text-align: center;
+  bottom:0;
+}
+
+.footer-link {
+  color: white;
+}
+.footer-link:hover {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .search-container, .photo-card {
+    margin: 3% 12%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .search-container, .photo-card {
+    margin: 1%;
+  }
+}
+
