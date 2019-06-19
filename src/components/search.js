@@ -32,21 +32,21 @@ const Search = props => {
         if (isNaN(data)) {
             setFormError(
                 <div className="alert alert-danger" role="alert">
-                    Sol must be a number
+                    Must be a number
                 </div>
             );
         }
         else if (/[a-zA-Z]/.test(formData.sol)) {
             setFormError(
                 <div className="alert alert-danger" role="alert">
-                    Sol must be a number
+                    Must not contain any letters or characters
                 </div>
             );
         }
         else if (data < 0 || data > 2434) {
             setFormError(
                 <div className="alert alert-danger" role="alert">
-                    Sol must be a number between 0 and 2434
+                    Must be a number between 0 and 2434
                 </div>
             );
         }
@@ -79,7 +79,6 @@ const Search = props => {
             </div>
             <button disabled={disabled} type="submit" className="btn btn-primary btn-submit">Submit</button>
         </form>
-        
     );
 }
 export default Search;
