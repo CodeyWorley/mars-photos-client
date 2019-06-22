@@ -16,10 +16,7 @@ const Search = props => {
     const fetchPhotos = async (sol, camera) => {
         props.displayLoading();
         setDisabled(true);
-        const response = await axios(`${API_BASE_URL}/api/mars/${sol}/${camera}`, {headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          }});
+        const response = await axios(`${API_BASE_URL}/api/mars/${sol}/${camera}`);
         props.displayPhotos(response.data);
         setDisabled(false);
     }
